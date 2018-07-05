@@ -19,9 +19,9 @@ public class App {
     	HtmlPage page = null;
     	File volume;
     	BufferedWriter writer;
-    	
-    	int chapQnt = 60;
-    	int initChapNum = 320;
+    	 
+    	int chapQnt = 80;
+    	int initChapNum = 580;
     	int volNum = Math.round(initChapNum / 20);
     	String firstUrl = "https://www.wuxiaworld.com/novel/overgeared/og-chapter-" + initChapNum;
     	StringBuilder fileName = new StringBuilder("/home/david-franco/Documents/personal/ebooks/overgeared/Overgeared_vol-" + volNum + ".md");
@@ -38,7 +38,7 @@ public class App {
     	writer = new BufferedWriter(new FileWriter(fileName.toString(), true));
     	
     	writer.append("% Overgeared Vol. " + volNum + "\n");
-    	writer.append("% Author: Park Saenal \n");
+    	writer.append("% Park Saenal \n");
     	writer.append("% Chapters " + initChapNum + " to " + (initChapNum + 20) + "\n\n");
     	
     	for (int chapNum = initChapNum; chapNum < (initChapNum + chapQnt); chapNum++) {
@@ -59,7 +59,7 @@ public class App {
 	        	writer = new BufferedWriter(new FileWriter(fileName.toString(), true));
 	        	
 	        	writer.append("% Overgeared Vol. " + volNum + "\n");
-	        	writer.append("% Author: Park Saenal \n");
+	        	writer.append("% Park Saenal \n");
 	        	writer.append("% Chapters " + chapNum + " to " + (chapNum + 20) + "\n\n");
     		}
     		//writer.append("\n" + "volNum: "+ volNum + "\t" + "chapNum: " + chapNum);
@@ -67,6 +67,8 @@ public class App {
     		System.out.println("Getting Data from " + page.getUrl());
     		
 			@SuppressWarnings("unchecked")
+			
+			
 			List<HtmlElement> items = (List<HtmlElement>) page.getByXPath("//div[@class='fr-view']/*[not(name()='a')]") ;
 			
 			for (HtmlElement item : items) {
@@ -88,7 +90,7 @@ public class App {
 			
     		System.out.println("Done Writing " + page.getUrl() + "\n\t to " + fileName.toString() + "\n Waiting 5s...");
 
-    		Thread.sleep(5000);
+    		Thread.sleep(2000);
     		
     		HtmlAnchor nextPageLink = page.getAnchorByText("Next Chapter");
     		
